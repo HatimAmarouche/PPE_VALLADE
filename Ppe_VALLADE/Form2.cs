@@ -60,6 +60,7 @@ namespace Ppe_VALLADE
             dataGridView2.DataSource = database.MesParticipants();
             lesparticipants = database.MesParticipants();
             lesinscrits = database.MesInscrits(session.id.ToString());
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -69,24 +70,33 @@ namespace Ppe_VALLADE
                 Participant le_participant = (Participant)row.DataBoundItem;
                 lesparticipants.Remove(le_participant);
                 lesinscrits.Add(le_participant);
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = lesinscrits;
+            }
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = lesinscrits;
+
+            dataGridView2.DataSource = null;
+            dataGridView2.DataSource = lesparticipants;
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                Participant le_participant = (Participant)row.DataBoundItem;
+                lesinscrits.Remove(le_participant);
+                lesparticipants.Remove(le_participant);
 
                 dataGridView2.DataSource = null;
                 dataGridView2.DataSource = lesparticipants;
-
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = lesinscrits;
             }
 
+          
 
-
-
-
+            
         }
-
-           
-
-
-        }
-        
     }
 
+}

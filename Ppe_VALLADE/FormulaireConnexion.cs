@@ -22,11 +22,9 @@ namespace Ppe_VALLADE
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(textBox1.ToString()=="root" && textBox2.ToString()=="1234")
+            if(database.Connexion(textBox1.Text, textBox2.Text).Count() > 0)
             {
-                Form1 form1 = new Form1();
-                form1.Show();
-                this.Hide();
+                Application.Run(new Form1());
             }
         }
     }

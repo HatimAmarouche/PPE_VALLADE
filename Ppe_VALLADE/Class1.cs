@@ -113,6 +113,21 @@ namespace Ppe_VALLADE
         public Session LaSessionChoisie { get; set; }
     }
 
+    public class Utilisateur
+    {
+        private int _id;
+        private string _ndc;
+        private string _mdp;
+        private string level;
+
+        public int Id { get; set; }
+        public string Ndc { get; set; }
+        public string Mdp { get; set; }
+        public string Level { get; set; }
+
+
+    }
+
 }
 
 
