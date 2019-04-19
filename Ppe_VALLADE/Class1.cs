@@ -118,15 +118,52 @@ namespace Ppe_VALLADE
         private int _id;
         private string _ndc;
         private string _mdp;
-        private string level;
+        private string _level;
 
         public int Id { get; set; }
         public string Ndc { get; set; }
         public string Mdp { get; set; }
-        public string Level { get; set; }
+        public String level
+        {
+            get
+            {
+                return _level;
+            }
+
+            set
+            {
+                _level = value;
+            }
+        }
+
+
+        public Utilisateur(int Id, string Ndc, string Mdp, string Level)
+        {
+            _id = Id;
+            _ndc = Ndc;
+            _mdp = Mdp;
+            _level = Level;
+        }
 
 
     }
+
+    public class Incident
+    {
+        private int _id;
+        private DateTime _date_incident;
+        private string _resolu;
+        private string _description;
+
+        
+        public int Id { get; set; }
+        public DateTime Date_incident { get; set; }
+        private string Resolu { get; set; }
+        private string Description { get; set; }
+
+    }
+
+
 
 }
 

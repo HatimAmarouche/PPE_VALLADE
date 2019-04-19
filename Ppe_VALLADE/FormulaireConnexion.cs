@@ -22,10 +22,33 @@ namespace Ppe_VALLADE
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(database.Connexion(textBox1.Text, textBox2.Text).Count() > 0)
+            string level = database.Connexion(textBox1.Text, textBox2.Text);
+
+            if(level == "1")
             {
-                Application.Run(new Form1());
+                this.Hide();
+
+                UtilisateurForm UtilisateurForm = new UtilisateurForm();
+                UtilisateurForm.ShowDialog();
+
+            }
+
+            else if(level == "2")
+            {
+                this.Hide();
+
+                GestionnaireForm GestionnaireForm = new GestionnaireForm();
+                GestionnaireForm.ShowDialog();
+            }
+
+            else
+            {
+                this.Hide();
+
+                Form1 FormAdmin = new Form1();
+                FormAdmin.ShowDialog();
             }
         }
+
     }
 }

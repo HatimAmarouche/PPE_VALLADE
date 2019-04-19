@@ -15,6 +15,7 @@ namespace Ppe_VALLADE
         private DatabaseFormation database = new DatabaseFormation();
         List<Participant> lesparticipants = new List<Participant>();
         List<Participant> lesinscrits = new List<Participant>();
+        List<Incident> lesincidents = new List<Incident>();
         private Formation _formation;
         private Session _session;
 
@@ -57,25 +58,35 @@ namespace Ppe_VALLADE
             textBox2.Text = session.datedebut.ToString();
             textBox3.Text = session.datefin.ToString();
 
-            dataGridView2.DataSource = database.MesParticipants();
             lesparticipants = database.MesParticipants();
+            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView2.DataSource = lesparticipants;
+               
             lesinscrits = database.MesInscrits(session.id.ToString());
-            
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.DataSource = lesinscrits;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in dataGridView2.SelectedRows)
             {
+                var monparticipant = (Participant)dataGridView2.CurrentRow.DataBoundItem;
                 Participant le_participant = (Participant)row.DataBoundItem;
-                lesparticipants.Remove(le_participant);
-                lesinscrits.Add(le_participant);
-            }
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = lesinscrits;
 
-            dataGridView2.DataSource = null;
-            dataGridView2.DataSource = lesparticipants;
+                int Indexparticipant = -1;
+                Indexparticipant = lesparticipants.IndexOf(monparticipant);
+
+                lesparticipants.RemoveAt(Indexparticipant);
+                lesinscrits.Add(le_participant);
+
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = lesinscrits;
+
+                dataGridView2.DataSource = null;
+                dataGridView2.DataSource = lesparticipants;
+            }
+          
 
         }
 
@@ -83,12 +94,18 @@ namespace Ppe_VALLADE
         {
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
+                var moninscrit = (Participant)dataGridView1.CurrentRow.DataBoundItem;
                 Participant le_participant = (Participant)row.DataBoundItem;
-                lesinscrits.Remove(le_participant);
-                lesparticipants.Remove(le_participant);
+
+                int Indexinscrit = -1;
+                Indexinscrit = lesinscrits.IndexOf(moninscrit);
+
+                lesinscrits.RemoveAt(Indexinscrit);
+                lesparticipants.Add(le_participant);
 
                 dataGridView2.DataSource = null;
                 dataGridView2.DataSource = lesparticipants;
+
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = lesinscrits;
             }
@@ -96,6 +113,12 @@ namespace Ppe_VALLADE
           
 
             
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FormIncidentUser formincident = new FormIncidentUser();
+            formincident.ShowDialog();
         }
     }
 
