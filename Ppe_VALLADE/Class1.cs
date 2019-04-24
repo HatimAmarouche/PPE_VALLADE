@@ -86,8 +86,8 @@ namespace Ppe_VALLADE
     {
 
         private int _id;
-        private string _Nom;
-        private int _Niveau;
+        private string _nom;
+        private int _niveau;
         private List<Session> lesSessions = new List<Session>();
 
 
@@ -96,6 +96,13 @@ namespace Ppe_VALLADE
         public string Nom { get; set; }
         public int Niveau { get; set; }
         public Session LesSessions { get; set; }
+
+        public Formation(int Id, int Niveau, string Nom)
+        {
+            _id = Id;
+            _niveau = Niveau;
+            _nom = Nom;
+        }
 
     }
 
@@ -111,6 +118,13 @@ namespace Ppe_VALLADE
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public Session LaSessionChoisie { get; set; }
+
+        public Participant(int Id, string Nom, string Prenom)
+        {
+            _id = Id;
+            _Nom = Nom;
+            _Prenom = Prenom;
+        }
     }
 
     public class Utilisateur

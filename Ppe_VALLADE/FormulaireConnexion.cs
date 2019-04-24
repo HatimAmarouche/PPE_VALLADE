@@ -37,16 +37,21 @@ namespace Ppe_VALLADE
             {
                 this.Hide();
 
-                GestionnaireForm GestionnaireForm = new GestionnaireForm();
+                Form1 GestionnaireForm = new Form1();
                 GestionnaireForm.ShowDialog();
+            }
+
+            else if(level =="3")
+            {
+                this.Hide();
+
+                FormAdmin FormAdmin = new FormAdmin();
+                FormAdmin.ShowDialog();
             }
 
             else
             {
-                this.Hide();
-
-                Form1 FormAdmin = new Form1();
-                FormAdmin.ShowDialog();
+                MessageBox.Show("Connexion échouée");
             }
         }
 

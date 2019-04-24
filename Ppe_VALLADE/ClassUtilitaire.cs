@@ -106,6 +106,40 @@ namespace Ppe_VALLADE
 
         }
 
+        public void CreateUser(string  ndc, string mdp, string level)
+        {
+            String strQuery = "INSERT INTO utilisateur(id, ndc, mdp,level) VALUES (NULL,@_ndc, @_mdp, @_level)";
+            var parameters = new DynamicParameters();
+            parameters.Add("_ndc", ndc);
+            parameters.Add("_mdp", ndc);
+            parameters.Add("_level", ndc);
+            connexion.Open();
+            connexion.Query<Utilisateur>(strQuery, parameters).ToList();
+            connexion.Close();
+        }
+
+        public void CreateParticipant(string nom, string prenom)
+        {
+            String strQuery = "INSERT INTO participant(id, nom, prenom) VALUES (NULL, @_nom, @_prenom)";
+            var parameters = new DynamicParameters();
+            parameters.Add("_nom", nom);
+            parameters.Add("_prenom", prenom);
+            connexion.Open();
+            connexion.Query<Participant>(strQuery, parameters).ToList();
+            connexion.Close();
+        }
+
+        public void CreateFormation(int niveau, string nom)
+        {
+            String strQuery = "INSERT INTO formation(id, niveau, nom) VALUES (NULL, @_niveau, @_nom)";
+            var parameters = new DynamicParameters();
+            parameters.Add("_niveau", niveau);
+            parameters.Add("_nom", nom);
+            connexion.Open();
+            connexion.Query<Utilisateur>(strQuery, parameters).ToList();
+            connexion.Close();
+        }
+
 
     }
 

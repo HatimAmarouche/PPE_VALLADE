@@ -17,7 +17,7 @@ namespace Ppe_VALLADE
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new FormulaireConnexion());
+            Application.Run(new FormAdmin());
             }
 
          
