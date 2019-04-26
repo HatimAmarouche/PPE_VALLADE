@@ -25,9 +25,9 @@ namespace Ppe_VALLADE
         public List<Formation> MesFormations()
         {
 
-            string Marequete = "SELECT * FROM FORMATION";
+            string strQuery = "SELECT Id, Niveau, Nom FROM formation";
             connexion.Open();
-            var formations = connexion.Query<Formation>(Marequete).ToList();
+            var formations = connexion.Query<Formation>(strQuery).ToList();
             connexion.Close();
 
             return formations;
@@ -71,16 +71,28 @@ namespace Ppe_VALLADE
 
         }
 
-   /*     public List<Incident> MesIncidents()
+        public List<Utilisateur> MesUtilisateurs()
         {
-            String strQuery = "SELECT id, resolu, date_incident, description FROM incident";
+            String strQuery = "SELECT * FROM utilisateur";
             connexion.Open();
-            var incidents = connexion.Query<Incident>(strQuery).ToList();
+            var utilisateurs = connexion.Query<Utilisateur>(strQuery).ToList();
             connexion.Close();
-            return incidents;
-        } */
 
-    
+            return utilisateurs;
+
+        }
+
+
+        /*     public List<Incident> MesIncidents()
+             {
+                 String strQuery = "SELECT id, resolu, date_incident, description FROM incident";
+                 connexion.Open();
+                 var incidents = connexion.Query<Incident>(strQuery).ToList();
+                 connexion.Close();
+                 return incidents;
+             } */
+
+
 
         public string Connexion(String ndc, String mdp)
         {
@@ -91,10 +103,10 @@ namespace Ppe_VALLADE
             parameters.Add("_ndc", ndc);
             parameters.Add("_mdp", mdp);
             connexion.Open();
-            dynamic maconnexion = connexion.Query<Utilisateur>(strQuery, parameters); 
+            dynamic maconnexion = connexion.Query<Utilisateur>(strQuery, parameters);
             connexion.Close();
 
-            if(maconnexion != null)
+            if (maconnexion != null)
             {
                 return maconnexion[0].level;
             }
@@ -106,13 +118,13 @@ namespace Ppe_VALLADE
 
         }
 
-        public void CreateUser(string  ndc, string mdp, string level)
+        public void CreateUser(string ndc, string mdp, string level)
         {
-            String strQuery = "INSERT INTO utilisateur(id, ndc, mdp,level) VALUES (NULL,@_ndc, @_mdp, @_level)";
+            String strQuery = "INSERT INTO utilisateur(id, ndc, mdp, level) VALUES (NULL, @_ndc, @_mdp, @_level)";
             var parameters = new DynamicParameters();
             parameters.Add("_ndc", ndc);
-            parameters.Add("_mdp", ndc);
-            parameters.Add("_level", ndc);
+            parameters.Add("_mdp", mdp);
+            parameters.Add("_level", level);
             connexion.Open();
             connexion.Query<Utilisateur>(strQuery, parameters).ToList();
             connexion.Close();
@@ -140,6 +152,18 @@ namespace Ppe_VALLADE
             connexion.Close();
         }
 
+        public List<Utilisateur> NdcUtilisateur(string ndc)
+        {
+            connexion.Open();
+            String strQuery = "select * from utilisateur where ndc  = @_ndc";
+            var parameters = new DynamicParameters();
+            parameters.Add("@_ndc", ndc);
+            var monuser = connexion.Query<Utilisateur>(strQuery, parameters).ToList();
+            connexion.Close();
+            return monuser;
+
+
+        }
 
     }
 

@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace Ppe_VALLADE
 {
+
     public partial class FormAdmin : Form
     {
+        private DatabaseFormation database = new DatabaseFormation();
+        List<Formation> lesformations = new List<Formation>();
+        List<Utilisateur> lesutilisateurs = new List<Utilisateur>();
+        List<Participant> lesparticipants = new List<Participant>();
         public FormAdmin()
         {
             InitializeComponent();
+            database.ConnectDB();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -36,6 +42,25 @@ namespace Ppe_VALLADE
             FormAdminAjoutUtilisateur formAdminAjoutUtilisateur = new FormAdminAjoutUtilisateur();
 
             formAdminAjoutUtilisateur.ShowDialog();
+        }
+
+        private void FormAdmin_Load(object sender, EventArgs e)
+        {
+            lesformations = database.MesFormations();
+            dataGridView2.DataSource = lesformations; 
+
+            lesutilisateurs = database.MesUtilisateurs();
+            dataGridView1.DataSource = lesutilisateurs;
+
+            lesparticipants = database.MesParticipants();
+            dataGridView3.DataSource = lesparticipants;
+
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[2].Visible = false;
+            dataGridView2.Columns[0].Visible = false;
+            dataGridView2.Columns[3].Visible = false;
+            dataGridView3.Columns[0].Visible = false;
+
         }
     }
 }

@@ -55,14 +55,14 @@ namespace Ppe_VALLADE
         private void Form2_Load(object sender, EventArgs e)
         {
             textBox1.Text = formation.Nom;
-            textBox2.Text = session.datedebut.ToString();
-            textBox3.Text = session.datefin.ToString();
+            textBox2.Text = session.Datedebut.ToString();
+            textBox3.Text = session.Datefin.ToString();
 
             lesparticipants = database.MesParticipants();
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView2.DataSource = lesparticipants;
                
-            lesinscrits = database.MesInscrits(session.id.ToString());
+            lesinscrits = database.MesInscrits(session.Id.ToString());
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.DataSource = lesinscrits;
         }

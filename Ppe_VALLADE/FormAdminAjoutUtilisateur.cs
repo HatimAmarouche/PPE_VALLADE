@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,12 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Security.Cryptography;
+using Dapper;
+using HashageStandard;
+using MySql.Data.MySqlClient;
+
+
 namespace Ppe_VALLADE
 {
     public partial class FormAdminAjoutUtilisateur : Form
     {
         private DatabaseFormation database = new DatabaseFormation();
+        List<Utilisateur> monuser = new List<Utilisateur>();
         public FormAdminAjoutUtilisateur()
         {
             InitializeComponent();
@@ -23,11 +29,23 @@ namespace Ppe_VALLADE
         {
             string level = textBox1.Text;
             string ndc = textBox2.Text;
-            string mdp = textBox3.Text;
+            string mdp = SHA.MakeMD5Hash(textBox3.Text);
 
-            database.CreateUser(ndc, mdp, level);
+            monuser = database.NdcUtilisateur(ndc);
 
-            this.DialogResult = DialogResult.OK;
+            if (monuser.Count > 0)
+            {
+                MessageBox.Show("Cet identifiant est déjà utilisé");
+
+            }
+
+            else
+            {
+
+                database.CreateUser(ndc, mdp, level);
+
+                this.DialogResult = DialogResult.OK;
+            }
         }
     }
 }

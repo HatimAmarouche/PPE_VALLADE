@@ -13,70 +13,70 @@ namespace Ppe_VALLADE
     public class Session
     {
 
-        private int _Id;
-        private DateTime _DateDebut;
-        private DateTime _DateFin;
-        private string _Lieu;
-        private Formation _LaFormation;
-        private List<Participant> _LesParticipants;
+        private int id;
+        private DateTime dateDebut;
+        private DateTime dateFin;
+        private string lieu;
+        private Formation laFormation;
+        private List<Participant> lesParticipants;
 
-        public int id
+        public int Id
         {
             get
             {
-                return _Id;
+                return id;
             }
 
             set
             {
-                _Id = value;
+                id = value;
             }
         }
-        public DateTime datedebut
+        public DateTime Datedebut
         {
             get
             {
-                return _DateDebut;
+                return dateDebut;
 
             }
             set
             {
-                _DateDebut = value;
-            }
-        }
-
-        public DateTime datefin
-        {
-            get
-            {
-                return _DateFin;
-
-            }
-            set
-            {
-                _DateFin = value;
+                dateDebut = value;
             }
         }
 
-        public string lieu
+        public DateTime Datefin
         {
             get
             {
-                return _Lieu;
+                return dateFin;
 
             }
             set
             {
-                _Lieu = value;
+                dateFin = value;
+            }
+        }
+
+        public string Lieu
+        {
+            get
+            {
+                return lieu;
+
+            }
+            set
+            {
+                lieu = value;
             }
         }
 
         public Session(int Id, DateTime DateDebut, DateTime DateFin, string Lieux)
         {
-            _Id = Id;
-            _DateDebut = DateDebut;
-            _DateFin = DateFin;
-            _Lieu = Lieux;
+            id = Id;
+            dateDebut = DateDebut;
+            dateFin = DateFin;
+            lieu = Lieux;
         }
         public Formation LaFormation { get; set; }
         public List<Participant> LesParticipants { get; set; }
@@ -85,23 +85,57 @@ namespace Ppe_VALLADE
     public class Formation
     {
 
-        private int _id;
-        private string _nom;
-        private int _niveau;
+  
+        private int id;
+        private string nom;
+        private int niveau;
         private List<Session> lesSessions = new List<Session>();
 
+        
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
 
+            set
+            {
+                id = value;
+            }
+        }
 
-        public int id { get; set; }
-        public string Nom { get; set; }
-        public int Niveau { get; set; }
+        public string Nom
+        {
+            get
+            {
+                return nom;
+            }
+
+            set
+            {
+                nom = value;
+            }
+        }
+        public int Niveau
+        {
+            get
+            {
+                return niveau;
+            }
+
+            set
+            {
+                niveau = value;
+            }
+        }
         public Session LesSessions { get; set; }
 
         public Formation(int Id, int Niveau, string Nom)
         {
-            _id = Id;
-            _niveau = Niveau;
-            _nom = Nom;
+            id = Id;
+            niveau = Niveau;
+            nom = Nom;
         }
 
     }
@@ -109,10 +143,10 @@ namespace Ppe_VALLADE
     public class Participant
     {
 
-        private int _id;
-        private string _Nom;
-        private string _Prenom;
-        private Session _LaSessionChoisie;
+        private int id;
+        private string nom;
+        private string prenom;
+        private Session laSessionChoisie;
 
         public int Id { get; set; }
         public string Nom { get; set; }
@@ -121,42 +155,77 @@ namespace Ppe_VALLADE
 
         public Participant(int Id, string Nom, string Prenom)
         {
-            _id = Id;
-            _Nom = Nom;
-            _Prenom = Prenom;
+            id = Id;
+            nom = Nom;
+            prenom = Prenom;
         }
     }
 
     public class Utilisateur
     {
-        private int _id;
-        private string _ndc;
-        private string _mdp;
-        private string _level;
+        private int id;
+        private string ndc;
+        private string mdp;
+        private string level;
 
-        public int Id { get; set; }
-        public string Ndc { get; set; }
-        public string Mdp { get; set; }
-        public String level
+        public int Id
         {
             get
             {
-                return _level;
+                return id;
             }
 
             set
             {
-                _level = value;
+                id = value;
+            }
+        }
+        public string Ndc
+        {
+            get
+            {
+                return ndc;
+            }
+
+            set
+            {
+                ndc = value;
+            }
+        }
+
+        public string Mdp
+        {
+            get
+            {
+                return mdp;
+            }
+
+            set
+            {
+                mdp = value;
+            }
+        }
+     
+        public string Level
+        {
+            get
+            {
+                return level;
+            }
+
+            set
+            {
+                level = value;
             }
         }
 
 
         public Utilisateur(int Id, string Ndc, string Mdp, string Level)
         {
-            _id = Id;
-            _ndc = Ndc;
-            _mdp = Mdp;
-            _level = Level;
+            id = Id;
+            ndc = Ndc;
+            mdp = Mdp;
+            level = Level;
         }
 
 

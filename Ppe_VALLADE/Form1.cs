@@ -47,7 +47,7 @@ namespace Ppe_VALLADE
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Formation maformation = (Formation)comboBox1.SelectedItem;
-            dataGridView1.DataSource = database.MesSessions(maformation.id.ToString());
+            dataGridView1.DataSource = database.MesSessions(maformation.Id.ToString());
             dataGridView1.Columns[0].Visible = false;
 
             //Charger les sessions quand la formation change
