@@ -27,7 +27,7 @@ namespace Ppe_VALLADE
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string level = textBox1.Text;
+            int level = Convert.ToInt32(textBox1.Text);
             string ndc = textBox2.Text;
             string mdp = SHA.MakeMD5Hash(textBox3.Text);
 

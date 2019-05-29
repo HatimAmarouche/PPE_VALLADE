@@ -13,6 +13,8 @@ namespace Ppe_VALLADE
 {
     public partial class FormulaireConnexion : Form
     {
+        public Utilisateur laconnexion = new Utilisateur();
+        DateTime datetoday = DateTime.Now;
         private DatabaseFormation database = new DatabaseFormation();
         public FormulaireConnexion()
         {
@@ -22,37 +24,72 @@ namespace Ppe_VALLADE
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string level = database.Connexion(textBox1.Text, textBox2.Text);
+           
+           List<Utilisateur> maconnexion = database.Connexion(textBox1.Text, textBox2.Text);
 
-            if(level == "1")
+            foreach(Utilisateur uneconnexion in maconnexion)
             {
-                this.Hide();
-
-                UtilisateurForm UtilisateurForm = new UtilisateurForm();
-                UtilisateurForm.ShowDialog();
-
+                laconnexion = uneconnexion;
             }
 
-            else if(level == "2")
-            {
-                this.Hide();
+            var timeco = (datetoday - laconnexion.Date_co).TotalHours;
 
-                Form1 GestionnaireForm = new Form1();
-                GestionnaireForm.ShowDialog();
+            if (laconnexion.Date_co == null)
+            {
+                laconnexion.Date_co = datetoday;
             }
 
-            else if(level =="3")
+            else if(timeco >= 24)
             {
-                this.Hide();
+                laconnexion.Date_co = datetoday;
+                database.InsertDateCo(laconnexion.Id, laconnexion.Date_co);
+            }
 
-                FormAdmin FormAdmin = new FormAdmin();
-                FormAdmin.ShowDialog();
+            if(laconnexion.Nbtentative > 6 && timeco <= 24)
+            {
+                MessageBox.Show("Votre compte est bloqué. Veuillez rénitialiser votre mot de passe");
+            }
+
+
+
+            if (database.Connexion(textBox1.Text, textBox2.Text).Count() == 1)
+            {
+
+                if (laconnexion.Level == 1)
+
+                {
+                    this.Hide();
+
+                    UtilisateurForm UtilisateurForm = new UtilisateurForm();
+                    UtilisateurForm.ShowDialog();
+
+                }
+
+                else if (laconnexion.Level == 2)
+                {
+                    this.Hide();
+
+                    Form1 GestionnaireForm = new Form1();
+                    GestionnaireForm.ShowDialog();
+                }
+
+                else if (laconnexion.Level == 3)
+                {
+                    this.Hide();
+
+                    FormAdmin FormAdmin = new FormAdmin();
+                    FormAdmin.ShowDialog();
+                }
             }
 
             else
             {
-                MessageBox.Show("Connexion échouée");
+                int nbtentative = laconnexion.Nbtentative;
+             //   MessageBox.Show("Mauvais login ou mot de passe. Il vous reste plus que" + tentativerestante.ToString() + "restantes");
+                database.IncrementationNbTentative(textBox1.Text);
+                
             }
+            
         }
 
     }

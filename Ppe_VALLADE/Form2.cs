@@ -61,32 +61,47 @@ namespace Ppe_VALLADE
             lesparticipants = database.MesParticipants();
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView2.DataSource = lesparticipants;
-               
+
             lesinscrits = database.MesInscrits(session.Id.ToString());
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.DataSource = lesinscrits;
+            if(lesinscrits.Count() > 0)
+            { dataGridView1.DataSource = lesinscrits; }
+            else
+            {
+                dataGridView1.Visible = false;
+                label4.Visible = true;
+            }
+          
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if(label4.Visible == true)
+            {
+                dataGridView1.Visible = true;
+                label4.Visible = false;
+            }
+
             foreach (DataGridViewRow row in dataGridView2.SelectedRows)
             {
                 var monparticipant = (Participant)dataGridView2.CurrentRow.DataBoundItem;
-                Participant le_participant = (Participant)row.DataBoundItem;
+               // Participant le_participant = (Participant)row.DataBoundItem;
 
                 int Indexparticipant = -1;
                 Indexparticipant = lesparticipants.IndexOf(monparticipant);
-
+                if(Indexparticipant>-1)
+                {
                 lesparticipants.RemoveAt(Indexparticipant);
-                lesinscrits.Add(le_participant);
+                lesinscrits.Add(monparticipant);
 
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = lesinscrits;
 
                 dataGridView2.DataSource = null;
                 dataGridView2.DataSource = lesparticipants;
+                }
             }
-          
+
 
         }
 
@@ -110,15 +125,16 @@ namespace Ppe_VALLADE
                 dataGridView1.DataSource = lesinscrits;
             }
 
-          
 
-            
+
+
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             FormIncidentUser formincident = new FormIncidentUser();
             formincident.ShowDialog();
+
         }
     }
 

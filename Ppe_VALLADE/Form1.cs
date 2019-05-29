@@ -36,10 +36,12 @@ namespace Ppe_VALLADE
         {
             Formation maformation = (Formation)comboBox1.SelectedItem;
             Session masession = (Session)dataGridView1.CurrentRow.DataBoundItem;
-
+            try { 
             Form2 form2 = new Form2(maformation, masession);
             form2.ShowDialog();
-
+            }
+            catch(Exception )
+            { }
 
             //En fonction de la formation et de la session choisie ouvre le form 2 en conséquence
         }

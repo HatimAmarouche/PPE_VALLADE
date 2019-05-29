@@ -78,6 +78,8 @@ namespace Ppe_VALLADE
             dateFin = DateFin;
             lieu = Lieux;
         }
+
+     
         public Formation LaFormation { get; set; }
         public List<Participant> LesParticipants { get; set; }
     }
@@ -146,18 +148,66 @@ namespace Ppe_VALLADE
         private int id;
         private string nom;
         private string prenom;
-        private Session laSessionChoisie;
+        private int idsession;
 
-        public int Id { get; set; }
-        public string Nom { get; set; }
-        public string Prenom { get; set; }
-        public Session LaSessionChoisie { get; set; }
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
 
-        public Participant(int Id, string Nom, string Prenom)
+            set
+            {
+                id = value;
+            }
+        }
+
+        public string Nom
+        {
+            get
+            {
+                return nom;
+            }
+
+            set
+            {
+                nom = value;
+            }
+        }
+
+        public string Prenom
+        {
+            get
+            {
+                return prenom;
+            }
+
+            set
+            {
+                prenom = value;
+            }
+        }
+
+        public int IdSession
+        {
+            get
+            {
+                return idsession;
+            }
+
+            set
+            {
+                idsession = value;
+            }
+        }
+
+        public Participant(int Id, string Nom, string Prenom, int Idsession)
         {
             id = Id;
             nom = Nom;
             prenom = Prenom;
+            idsession = Idsession;
         }
     }
 
@@ -166,7 +216,9 @@ namespace Ppe_VALLADE
         private int id;
         private string ndc;
         private string mdp;
-        private string level;
+        private int level;
+        private DateTime date_co;
+        private int nbtentative;
 
         public int Id
         {
@@ -206,7 +258,7 @@ namespace Ppe_VALLADE
             }
         }
      
-        public string Level
+        public int Level
         {
             get
             {
@@ -218,16 +270,49 @@ namespace Ppe_VALLADE
                 level = value;
             }
         }
+        public DateTime Date_co
+        {
+            get
+            {
+                return date_co;
+            }
+
+            set
+            {
+                date_co = value;
+            }
+        }
+
+        public int Nbtentative
+        {
+            get
+            {
+                return nbtentative;
+            }
+
+            set
+            {
+                nbtentative = value;
+            }
+        }
 
 
-        public Utilisateur(int Id, string Ndc, string Mdp, string Level)
+        public Utilisateur(int Id, string Ndc, string Mdp, int Level, DateTime Date_co, int Nbtentative)
         {
             id = Id;
             ndc = Ndc;
             mdp = Mdp;
             level = Level;
+            date_co = Date_co;
+            nbtentative = Nbtentative;
         }
 
+        public Utilisateur()
+        {
+
+        }
+
+        
 
     }
 
@@ -244,6 +329,17 @@ namespace Ppe_VALLADE
         private string Resolu { get; set; }
         private string Description { get; set; }
 
+    }
+
+    public class Tentative
+    {
+        private int _id;
+        private int _id_user;
+        private DateTime _date_tentative;
+
+        public int Id { get; set; }
+        public int Id_user { get; set; }
+        public int Date_tentative { get; set; }
     }
 
 

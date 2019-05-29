@@ -88,17 +88,35 @@
     <Compile Include="FormAdminAjoutFormation.Designer.cs">
       <DependentUpon>FormAdminAjoutFormation.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAdminAjoutParticipant.cs">
+    <Compile Include="FormAdminAjoutSession.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAdminAjoutParticipant.Designer.cs">
-      <DependentUpon>FormAdminAjoutParticipant.cs</DependentUpon>
+    <Compile Include="FormAdminAjoutSession.Designer.cs">
+      <DependentUpon>FormAdminAjoutSession.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAdminAjoutUtilisateur.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormAdminAjoutUtilisateur.Designer.cs">
       <DependentUpon>FormAdminAjoutUtilisateur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAdminModifFormation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdminModifFormation.Designer.cs">
+      <DependentUpon>FormAdminModifFormation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAdminModifSession.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdminModifSession.Designer.cs">
+      <DependentUpon>FormAdminModifSession.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAdminModifUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdminModifUser.Designer.cs">
+      <DependentUpon>FormAdminModifUser.cs</DependentUpon>
     </Compile>
     <Compile Include="FormIncidentUser.cs">
       <SubType>Form</SubType>
@@ -133,11 +151,20 @@
     <EmbeddedResource Include="FormAdminAjoutFormation.resx">
       <DependentUpon>FormAdminAjoutFormation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAdminAjoutParticipant.resx">
-      <DependentUpon>FormAdminAjoutParticipant.cs</DependentUpon>
+    <EmbeddedResource Include="FormAdminAjoutSession.resx">
+      <DependentUpon>FormAdminAjoutSession.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAdminAjoutUtilisateur.resx">
       <DependentUpon>FormAdminAjoutUtilisateur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdminModifFormation.resx">
+      <DependentUpon>FormAdminModifFormation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdminModifSession.resx">
+      <DependentUpon>FormAdminModifSession.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdminModifUser.resx">
+      <DependentUpon>FormAdminModifUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormIncidentUser.resx">
       <DependentUpon>FormIncidentUser.cs</DependentUpon>
