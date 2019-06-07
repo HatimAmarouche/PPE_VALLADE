@@ -24,73 +24,106 @@ namespace Ppe_VALLADE
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
-           List<Utilisateur> maconnexion = database.Connexion(textBox1.Text, textBox2.Text);
-
-            foreach(Utilisateur uneconnexion in maconnexion)
-            {
-                laconnexion = uneconnexion;
-            }
-
-            var timeco = (datetoday - laconnexion.Date_co).TotalHours;
-
-            if (laconnexion.Date_co == null)
-            {
-                laconnexion.Date_co = datetoday;
-            }
-
-            else if(timeco >= 24)
-            {
-                laconnexion.Date_co = datetoday;
-                database.InsertDateCo(laconnexion.Id, laconnexion.Date_co);
-            }
-
-            if(laconnexion.Nbtentative > 6 && timeco <= 24)
-            {
-                MessageBox.Show("Votre compte est bloqué. Veuillez rénitialiser votre mot de passe");
-            }
-
-
 
             if (database.Connexion(textBox1.Text, textBox2.Text).Count() == 1)
             {
 
-                if (laconnexion.Level == 1)
+                List<Utilisateur> maconnexion = database.Connexion(textBox1.Text, textBox2.Text);
+
+                foreach (Utilisateur uneconnexion in maconnexion)
 
                 {
-                    this.Hide();
+                    laconnexion = uneconnexion;
+                }
 
-                    UtilisateurForm UtilisateurForm = new UtilisateurForm();
-                    UtilisateurForm.ShowDialog();
+                var timeco = (datetoday - laconnexion.Date_co).TotalHours;
+
+                if (laconnexion.Date_co == null || timeco >= 24)
+                {
+                    laconnexion.Date_co = datetoday;
+                    database.InsertDateCo(laconnexion.Id, laconnexion.Date_co);
+
+                    if (laconnexion.Level == 1)
+                    {
+                        this.Hide();
+                        FormUtilisateur2 UtilisateurForm = new FormUtilisateur2();
+                        UtilisateurForm.ShowDialog();
+
+                    }
+
+                    else if (laconnexion.Level == 2)
+                    {
+                        this.Hide();
+                        FormGest1 GestionnaireForm = new FormGest1();
+                        GestionnaireForm.ShowDialog();
+                    }
+
+                    else if (laconnexion.Level == 3)
+                    {
+                        this.Hide();
+                        FormAdmin FormAdmin = new FormAdmin();
+                        FormAdmin.ShowDialog();
+                    }
 
                 }
 
-                else if (laconnexion.Level == 2)
+           /*     else if (laconnexion.Nbtentative > 6 && timeco <= 24 && laconnexion.Etat == 1)
                 {
-                    this.Hide();
 
-                    Form1 GestionnaireForm = new Form1();
-                    GestionnaireForm.ShowDialog();
+                    MessageBox.Show("Votre compte est bloqué. Vous devez attendre une action de l'administrateur pour ensuite réinitialiser votre mot de passe");
+                    int monetat = 1;
+                    database.UpdateEtat(laconnexion.Id, monetat);
                 }
 
-                else if (laconnexion.Level == 3)
+                else if(laconnexion.Nbtentative > 6 && timeco <= 24 && laconnexion.Etat == 0)
                 {
-                    this.Hide();
+                    MessageBox.Show("L'administrateur a réinitialisé votre compte vous devez maintenant réinitialiser votre mot de passe");
+                }*/
 
-                    FormAdmin FormAdmin = new FormAdmin();
-                    FormAdmin.ShowDialog();
+                else
+                {
+                    if (laconnexion.Level == 1)
+                    {
+                        this.Hide();
+                        FormUtilisateur2 UtilisateurForm = new FormUtilisateur2();
+                        UtilisateurForm.ShowDialog();
+
+                    }
+
+                    else if (laconnexion.Level == 2)
+                    {
+                        this.Hide();
+                        FormGest1 GestionnaireForm = new FormGest1();
+                        GestionnaireForm.ShowDialog();
+                    }
+
+                    else if (laconnexion.Level == 3)
+                    {
+                        this.Hide();
+                        FormAdmin FormAdmin = new FormAdmin();
+                        FormAdmin.ShowDialog();
+                    }
                 }
+                
+             
             }
 
             else
             {
-                int nbtentative = laconnexion.Nbtentative;
-             //   MessageBox.Show("Mauvais login ou mot de passe. Il vous reste plus que" + tentativerestante.ToString() + "restantes");
-                database.IncrementationNbTentative(textBox1.Text);
-                
-            }
-            
-        }
 
+                MessageBox.Show("Erreur d'authentification");
+                database.IncrementationNbTentative(textBox1.Text);
+
+            }
+
+            }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+                FormMotDePassePerdu formMotDePassePerdu = new FormMotDePassePerdu();
+                formMotDePassePerdu.ShowDialog();
+
+        }
     }
 }
+

@@ -1,6 +1,6 @@
 ﻿namespace Ppe_VALLADE
 {
-    partial class Form1
+    partial class FormGest1
     {
         /// <summary>
         /// Variable nécessaire au concepteur.

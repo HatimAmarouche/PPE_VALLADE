@@ -70,7 +70,7 @@ namespace Ppe_VALLADE
             //SESSIONS
             public List<Session> MesSessions(String id_formation)
         {
-            string StrQuery = "SELECT id, DateDebut, DateFin, Lieux FROM session WHERE Id_Formation = @idformation";
+            string StrQuery = "SELECT Id, DateDebut, DateFin, Id_Formation, Lieux FROM session WHERE Id_Formation = @idformation";
             var parameters = new DynamicParameters();
             parameters.Add("idformation", id_formation);
             connexion.Open();
@@ -119,7 +119,7 @@ namespace Ppe_VALLADE
             //PARTICIPANTS
             public List<Participant> MesParticipants()
         {
-            String strQuery = "SELECT * FROM PARTICIPANT";
+            String strQuery = "SELECT * FROM PARTICIPANT WHERE idsession = 0";
             connexion.Open();
             var participants = connexion.Query<Participant>(strQuery).ToList();
             connexion.Close();
@@ -143,16 +143,17 @@ namespace Ppe_VALLADE
 
         }
 
-        /*  public void CreateParticipant(string nom, string prenom)
+         public void CreateParticipant(string nom, string prenom, string numero)
        {
-           String strQuery = "INSERT INTO participant(id, nom, prenom) VALUES (NULL, @_nom, @_prenom)";
+           String strQuery = "INSERT INTO participant(id, Nom, Prenom, idsession, Numero) VALUES (NULL, @_nom, @_prenom, NULL, @_numero)";
            var parameters = new DynamicParameters();
            parameters.Add("_nom", nom);
            parameters.Add("_prenom", prenom);
+           parameters.Add("_numero", numero);
            connexion.Open();
            connexion.Query<Participant>(strQuery, parameters).ToList();
            connexion.Close();
-       } */
+       } 
 
         //UTILISATEUR
         public List<Utilisateur> MesUtilisateurs()
@@ -182,7 +183,7 @@ namespace Ppe_VALLADE
         {
 
             List<Utilisateur> monutilisateur = new List<Utilisateur>();
-            String strQuery = "SELECT id, ndc, mdp, level, date_co, nbtentative FROM utilisateur WHERE ndc = @_ndc AND mdp = @_mdp";
+            String strQuery = "SELECT id, ndc, mdp, level, date_co, nbtentative, etat FROM utilisateur WHERE ndc = @_ndc AND mdp = @_mdp";
             var parameters = new DynamicParameters();
             parameters.Add("_ndc", ndc);
             parameters.Add("_mdp", mdp);
@@ -218,17 +219,20 @@ namespace Ppe_VALLADE
 
         }
 
-        public void UpdateUser(int id,string ndc, int level)
+
+        public void UpdateUser(int id,string ndc, int level, int etat)
         {
-            String strQuery = "UPDATE utilisateur SET ndc = @_ndc, level = @_level WHERE id = @_id";
+            String strQuery = "UPDATE utilisateur SET ndc = @_ndc, level = @_level, etat = @_etat WHERE id = @_id";
             var parameters = new DynamicParameters();
             parameters.Add("_id", id);
             parameters.Add("_ndc", ndc);
             parameters.Add("_level", level);
+            parameters.Add("_etat", etat);
             connexion.Open();
             connexion.Query(strQuery, parameters);
             connexion.Close();
         }
+
 
         public void SuppUtilisateur(int id)
         {
@@ -256,6 +260,51 @@ namespace Ppe_VALLADE
             var parameters = new DynamicParameters();
             parameters.Add("_id", id);
             parameters.Add("_date_co", date_co);
+            connexion.Open();
+            connexion.Query<Utilisateur>(strQuery, parameters).ToList();
+            connexion.Close();
+        }
+
+        public void UpdateMdp(int id, string mdp)
+        {
+            String strQuery = "UPDATE utilisateur SET mdp = @_mdp WHERE id = @_id";
+            var parameters = new DynamicParameters();
+            parameters.Add("_id", id);
+            parameters.Add("_mdp", mdp);
+            connexion.Open();
+            connexion.Query(strQuery, parameters);
+            connexion.Close();
+        }
+
+        public void UpdateEtat(int id, int etat)
+        {
+            String strQuery = "UPDATE utilisateur SET etat = @_etat WHERE id = @_id";
+            var parameters = new DynamicParameters();
+            parameters.Add("_id", id);
+            parameters.Add("_etat", etat);
+            connexion.Open();
+            connexion.Query(strQuery, parameters);
+            connexion.Close();
+        }
+
+        //SOUHAIT
+
+        public List<Souhait> MesSouhaits()
+        {
+
+            String strQuery = "SELECT * FROM souhait";
+            connexion.Open();
+            var souhaits = connexion.Query<Souhait>(strQuery).ToList();
+            connexion.Close();
+            return souhaits;
+
+        }
+        public void InsertSouhait(int id_participant, int id_session)
+        {
+            String strQuery = "INSERT INTO souhait(id, id_participant, id_session, accepter) VALUES (NULL, @_id_participant, @_id_session, NULL)";
+            var parameters = new DynamicParameters();
+            parameters.Add("_id_participant", id_participant);
+            parameters.Add("_id_session", id_session);
             connexion.Open();
             connexion.Query<Utilisateur>(strQuery, parameters).ToList();
             connexion.Close();

@@ -39,11 +39,12 @@ namespace Ppe_VALLADE
         {
             textBox1.Text = user.Ndc;
             textBox2.Text = user.Level.ToString();
+            textBox3.Text = user.Etat.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            database.UpdateUser(user.Id, textBox1.Text, Convert.ToInt32(textBox2.Text));
+            database.UpdateUser(user.Id, textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text));
 
             MessageBox.Show("Modifications prises en compte");
             this.DialogResult = DialogResult.OK;

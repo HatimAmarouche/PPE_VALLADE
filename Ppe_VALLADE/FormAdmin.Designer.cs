@@ -44,16 +44,21 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(33, 264);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(174, 23);
+            this.button1.Size = new System.Drawing.Size(107, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Ajouter";
             this.button1.UseVisualStyleBackColor = true;
@@ -63,7 +68,7 @@
             // 
             this.button2.Location = new System.Drawing.Point(443, 264);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(174, 23);
+            this.button2.Size = new System.Drawing.Size(107, 23);
             this.button2.TabIndex = 1;
             this.button2.Text = "Ajouter";
             this.button2.UseVisualStyleBackColor = true;
@@ -73,7 +78,7 @@
             // 
             this.button3.Location = new System.Drawing.Point(902, 264);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(159, 23);
+            this.button3.Size = new System.Drawing.Size(107, 23);
             this.button3.TabIndex = 2;
             this.button3.Text = "Ajouter";
             this.button3.UseVisualStyleBackColor = true;
@@ -117,9 +122,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(606, 264);
+            this.button4.Location = new System.Drawing.Point(595, 264);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(155, 23);
+            this.button4.Size = new System.Drawing.Size(107, 23);
             this.button4.TabIndex = 7;
             this.button4.Text = "Modifier";
             this.button4.UseVisualStyleBackColor = true;
@@ -127,9 +132,9 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(229, 264);
+            this.button5.Location = new System.Drawing.Point(156, 264);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(162, 23);
+            this.button5.Size = new System.Drawing.Size(107, 23);
             this.button5.TabIndex = 8;
             this.button5.Text = "Modifier";
             this.button5.UseVisualStyleBackColor = true;
@@ -170,9 +175,9 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(1067, 264);
+            this.button6.Location = new System.Drawing.Point(1035, 264);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.Size = new System.Drawing.Size(107, 23);
             this.button6.TabIndex = 17;
             this.button6.Text = "Modifier";
             this.button6.UseVisualStyleBackColor = true;
@@ -180,9 +185,9 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(66, 306);
+            this.button7.Location = new System.Drawing.Point(284, 264);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(85, 23);
+            this.button7.Size = new System.Drawing.Size(107, 23);
             this.button7.TabIndex = 18;
             this.button7.Text = "Supprimer";
             this.button7.UseVisualStyleBackColor = true;
@@ -190,9 +195,9 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(1148, 264);
+            this.button8.Location = new System.Drawing.Point(1153, 264);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(85, 23);
+            this.button8.Size = new System.Drawing.Size(107, 23);
             this.button8.TabIndex = 19;
             this.button8.Text = "Supprimer";
             this.button8.UseVisualStyleBackColor = true;
@@ -200,19 +205,62 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(767, 264);
+            this.button9.Location = new System.Drawing.Point(745, 264);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(85, 23);
+            this.button9.Size = new System.Drawing.Size(107, 23);
             this.button9.TabIndex = 20;
             this.button9.Text = "Supprimer";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
+            // dataGridView4
+            // 
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Location = new System.Drawing.Point(443, 363);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.RowTemplate.Height = 24;
+            this.dataGridView4.Size = new System.Drawing.Size(409, 150);
+            this.dataGridView4.TabIndex = 21;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(564, 307);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(170, 39);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "SOUHAIT";
+            this.label3.Visible = false;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(443, 526);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(183, 23);
+            this.button10.TabIndex = 23;
+            this.button10.Text = "Modifier";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(674, 526);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(178, 23);
+            this.button11.TabIndex = 24;
+            this.button11.Text = "Supprimer";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
             // FormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1292, 537);
+            this.ClientSize = new System.Drawing.Size(1292, 561);
+            this.Controls.Add(this.button11);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dataGridView4);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
@@ -235,6 +283,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,5 +307,9 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
     }
 }

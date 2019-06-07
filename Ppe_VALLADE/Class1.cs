@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using MySql.Data.MySqlClient;
+using System.IO;
+using System.Net;
 
 
 namespace Ppe_VALLADE
@@ -17,8 +19,8 @@ namespace Ppe_VALLADE
         private DateTime dateDebut;
         private DateTime dateFin;
         private string lieu;
-        private Formation laFormation;
-        private List<Participant> lesParticipants;
+        private int idformation;
+        
 
         public int Id
         {
@@ -71,17 +73,31 @@ namespace Ppe_VALLADE
             }
         }
 
-        public Session(int Id, DateTime DateDebut, DateTime DateFin, string Lieux)
+        public int Id_Formation
+        {
+            get
+            {
+                return idformation;
+            }
+
+            set
+            {
+                idformation = value;
+            }
+        }
+
+        public Session(int Id, DateTime DateDebut, DateTime DateFin, int Id_Formation, string Lieux)
         {
             id = Id;
             dateDebut = DateDebut;
             dateFin = DateFin;
+            idformation = Id_Formation;
             lieu = Lieux;
+         
         }
 
      
-        public Formation LaFormation { get; set; }
-        public List<Participant> LesParticipants { get; set; }
+
     }
 
     public class Formation
@@ -149,6 +165,7 @@ namespace Ppe_VALLADE
         private string nom;
         private string prenom;
         private int idsession;
+        private string numero;
 
         public int Id
         {
@@ -202,12 +219,26 @@ namespace Ppe_VALLADE
             }
         }
 
-        public Participant(int Id, string Nom, string Prenom, int Idsession)
+        public string Numero
+        {
+            get
+            {
+                return numero;
+            }
+
+            set
+            {
+                numero = value;
+            }
+        }
+
+        public Participant(int Id, string Nom, string Prenom, int Idsession, string Numero)
         {
             id = Id;
             nom = Nom;
             prenom = Prenom;
             idsession = Idsession;
+            numero = Numero;
         }
     }
 
@@ -219,6 +250,7 @@ namespace Ppe_VALLADE
         private int level;
         private DateTime date_co;
         private int nbtentative;
+        private int etat;
 
         public int Id
         {
@@ -296,8 +328,21 @@ namespace Ppe_VALLADE
             }
         }
 
+        public int Etat
+        {
+            get
+            {
+                return etat;
+            }
 
-        public Utilisateur(int Id, string Ndc, string Mdp, int Level, DateTime Date_co, int Nbtentative)
+            set
+            {
+                etat = value;
+            }
+        }
+
+
+        public Utilisateur(int Id, string Ndc, string Mdp, int Level, DateTime Date_co, int Nbtentative, int etat)
         {
             id = Id;
             ndc = Ndc;
@@ -305,6 +350,7 @@ namespace Ppe_VALLADE
             level = Level;
             date_co = Date_co;
             nbtentative = Nbtentative;
+            etat = Etat;
         }
 
         public Utilisateur()
@@ -316,7 +362,7 @@ namespace Ppe_VALLADE
 
     }
 
-    public class Incident
+  /* public class Incident
     {
         private int _id;
         private DateTime _date_incident;
@@ -329,9 +375,9 @@ namespace Ppe_VALLADE
         private string Resolu { get; set; }
         private string Description { get; set; }
 
-    }
+    }*/
 
-    public class Tentative
+ /*   public class Tentative
     {
         private int _id;
         private int _id_user;
@@ -340,6 +386,80 @@ namespace Ppe_VALLADE
         public int Id { get; set; }
         public int Id_user { get; set; }
         public int Date_tentative { get; set; }
+    }*/
+
+    public static class Sms
+    {
+          public static void Send(String msg, String numero)
+        {
+            
+            string sURL;
+            sURL = "https://SMStoB.com/http.php?email=accueil@agecif.com&pass=ZJ3R2Z&numero=$$num$$&message=$$msg$$";
+            sURL = sURL.Replace("$$num$$", numero);
+            sURL = sURL.Replace("$$msg$$", msg);
+            WebRequest wrGETURL;
+            wrGETURL = WebRequest.Create(sURL);
+            WebResponse response = wrGETURL.GetResponse();
+        }
+    }
+
+    public class Souhait
+    {
+        private int id;
+        private int id_participant;
+        private int id_session;
+        private int accepter;
+
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
+
+        public int Id_participant
+        {
+            get
+            {
+                return id_participant;
+            }
+
+            set
+            {
+                id_participant = value;
+            }
+        }
+        public int Id_session
+        {
+            get
+            {
+                return id_session;
+            }
+
+            set
+            {
+                id_session = value;
+            }
+        }
+
+        public int Accepter
+        {
+            get
+            {
+                return accepter;
+            }
+
+            set
+            {
+                accepter = value;
+            }
+        }
     }
 
 

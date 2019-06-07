@@ -17,6 +17,7 @@ namespace Ppe_VALLADE
         List<Formation> lesformations = new List<Formation>();
         List<Utilisateur> lesutilisateurs = new List<Utilisateur>();
         List<Session> lesessions = new List<Session>();
+        List<Souhait> lesouhaits = new List<Souhait>();
         public FormAdmin()
         {
             InitializeComponent();
@@ -57,6 +58,9 @@ namespace Ppe_VALLADE
 
             lesutilisateurs = database.MesUtilisateurs();
             dataGridView1.DataSource = lesutilisateurs;
+
+            lesouhaits = database.MesSouhaits();
+            dataGridView4.DataSource = lesouhaits;
 
             /*lesparticipants = database.MesParticipants();
             dataGridView3.DataSource = lesparticipants;*/
@@ -133,6 +137,15 @@ namespace Ppe_VALLADE
             database.SuppUtilisateur(usersupp.Id);
 
             MessageBox.Show("Utilisateur supprimée");
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            var souhaitsupp = (Souhait)dataGridView4.CurrentRow.DataBoundItem;
+
+            //requete pour supp souhait
+
+            MessageBox.Show("Souhait refusé");
         }
     }
 }

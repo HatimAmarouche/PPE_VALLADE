@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace Ppe_VALLADE
 {
-    public partial class Form2 : Form
+    public partial class FormGest2 : Form
     {
         private DatabaseFormation database = new DatabaseFormation();
         List<Participant> lesparticipants = new List<Participant>();
         List<Participant> lesinscrits = new List<Participant>();
-        List<Incident> lesincidents = new List<Incident>();
+       // List<Incident> lesincidents = new List<Incident>();
         private Formation _formation;
         private Session _session;
 
@@ -41,7 +41,7 @@ namespace Ppe_VALLADE
                 _session = value;
             }
         }
-        public Form2(Formation maformation, Session masession)
+        public FormGest2(Formation maformation, Session masession)
         {
             InitializeComponent();
             database.ConnectDB();
@@ -99,6 +99,9 @@ namespace Ppe_VALLADE
 
                 dataGridView2.DataSource = null;
                 dataGridView2.DataSource = lesparticipants;
+
+                database.InsertSouhait(monparticipant.Id, session.Id);
+                //requete pour inserer un souhait avec id_participant, id_session, accepter à 0
                 }
             }
 
@@ -135,6 +138,21 @@ namespace Ppe_VALLADE
             FormIncidentUser formincident = new FormIncidentUser();
             formincident.ShowDialog();
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            
+            var moninscrit = (Participant)dataGridView1.CurrentRow.DataBoundItem;
+            FormSms formsms = new FormSms(moninscrit);
+            formsms.ShowDialog();
+            
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            FormGestAjoutParticipant formGestAjoutParticipant = new FormGestAjoutParticipant();
+            formGestAjoutParticipant.ShowDialog();
         }
     }
 

@@ -11,11 +11,11 @@ using Dapper;
 
 namespace Ppe_VALLADE
 {
-    public partial class Form1 : Form
+    public partial class FormGest1 : Form
     {
         private DatabaseFormation database = new DatabaseFormation();
 
-        public Form1()
+        public FormGest1()
         {
             InitializeComponent();
             database.ConnectDB();
@@ -37,7 +37,7 @@ namespace Ppe_VALLADE
             Formation maformation = (Formation)comboBox1.SelectedItem;
             Session masession = (Session)dataGridView1.CurrentRow.DataBoundItem;
             try { 
-            Form2 form2 = new Form2(maformation, masession);
+            FormGest2 form2 = new FormGest2(maformation, masession);
             form2.ShowDialog();
             }
             catch(Exception )
