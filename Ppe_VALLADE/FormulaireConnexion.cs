@@ -46,8 +46,8 @@ namespace Ppe_VALLADE
                     if (laconnexion.Level == 1)
                     {
                         this.Hide();
-                        FormUtilisateur2 UtilisateurForm = new FormUtilisateur2();
-                        UtilisateurForm.ShowDialog();
+                        FormUtilisateur UtilisateurForm = new FormUtilisateur();
+                        UtilisateurForm.Show();
 
                     }
 
@@ -55,14 +55,14 @@ namespace Ppe_VALLADE
                     {
                         this.Hide();
                         FormGest1 GestionnaireForm = new FormGest1();
-                        GestionnaireForm.ShowDialog();
+                        GestionnaireForm.Show();
                     }
 
                     else if (laconnexion.Level == 3)
                     {
                         this.Hide();
                         FormAdmin FormAdmin = new FormAdmin();
-                        FormAdmin.ShowDialog();
+                        FormAdmin.Show();
                     }
 
                 }
@@ -85,7 +85,7 @@ namespace Ppe_VALLADE
                     if (laconnexion.Level == 1)
                     {
                         this.Hide();
-                        FormUtilisateur2 UtilisateurForm = new FormUtilisateur2();
+                        FormUtilisateur UtilisateurForm = new FormUtilisateur();
                         UtilisateurForm.ShowDialog();
 
                     }

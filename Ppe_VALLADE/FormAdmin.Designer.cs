@@ -58,7 +58,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(33, 264);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 23);
+            this.button1.Size = new System.Drawing.Size(107, 30);
             this.button1.TabIndex = 0;
             this.button1.Text = "Ajouter";
             this.button1.UseVisualStyleBackColor = true;
@@ -68,7 +68,7 @@
             // 
             this.button2.Location = new System.Drawing.Point(443, 264);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(107, 23);
+            this.button2.Size = new System.Drawing.Size(107, 30);
             this.button2.TabIndex = 1;
             this.button2.Text = "Ajouter";
             this.button2.UseVisualStyleBackColor = true;
@@ -78,7 +78,7 @@
             // 
             this.button3.Location = new System.Drawing.Point(902, 264);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(107, 23);
+            this.button3.Size = new System.Drawing.Size(107, 30);
             this.button3.TabIndex = 2;
             this.button3.Text = "Ajouter";
             this.button3.UseVisualStyleBackColor = true;
@@ -124,7 +124,7 @@
             // 
             this.button4.Location = new System.Drawing.Point(595, 264);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(107, 23);
+            this.button4.Size = new System.Drawing.Size(107, 30);
             this.button4.TabIndex = 7;
             this.button4.Text = "Modifier";
             this.button4.UseVisualStyleBackColor = true;
@@ -134,7 +134,7 @@
             // 
             this.button5.Location = new System.Drawing.Point(156, 264);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(107, 23);
+            this.button5.Size = new System.Drawing.Size(107, 30);
             this.button5.TabIndex = 8;
             this.button5.Text = "Modifier";
             this.button5.UseVisualStyleBackColor = true;
@@ -177,7 +177,7 @@
             // 
             this.button6.Location = new System.Drawing.Point(1035, 264);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(107, 23);
+            this.button6.Size = new System.Drawing.Size(107, 30);
             this.button6.TabIndex = 17;
             this.button6.Text = "Modifier";
             this.button6.UseVisualStyleBackColor = true;
@@ -187,7 +187,7 @@
             // 
             this.button7.Location = new System.Drawing.Point(284, 264);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(107, 23);
+            this.button7.Size = new System.Drawing.Size(107, 30);
             this.button7.TabIndex = 18;
             this.button7.Text = "Supprimer";
             this.button7.UseVisualStyleBackColor = true;
@@ -197,7 +197,7 @@
             // 
             this.button8.Location = new System.Drawing.Point(1153, 264);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(107, 23);
+            this.button8.Size = new System.Drawing.Size(107, 30);
             this.button8.TabIndex = 19;
             this.button8.Text = "Supprimer";
             this.button8.UseVisualStyleBackColor = true;
@@ -207,7 +207,7 @@
             // 
             this.button9.Location = new System.Drawing.Point(745, 264);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(107, 23);
+            this.button9.Size = new System.Drawing.Size(107, 30);
             this.button9.TabIndex = 20;
             this.button9.Text = "Supprimer";
             this.button9.UseVisualStyleBackColor = true;
@@ -235,18 +235,19 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(443, 526);
+            this.button10.Location = new System.Drawing.Point(544, 526);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(183, 23);
+            this.button10.Size = new System.Drawing.Size(107, 30);
             this.button10.TabIndex = 23;
             this.button10.Text = "Modifier";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button11
             // 
             this.button11.Location = new System.Drawing.Point(674, 526);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(178, 23);
+            this.button11.Size = new System.Drawing.Size(107, 30);
             this.button11.TabIndex = 24;
             this.button11.Text = "Supprimer";
             this.button11.UseVisualStyleBackColor = true;

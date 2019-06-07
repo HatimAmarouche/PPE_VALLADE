@@ -62,15 +62,19 @@ namespace Ppe_VALLADE
             lesouhaits = database.MesSouhaits();
             dataGridView4.DataSource = lesouhaits;
 
-            /*lesparticipants = database.MesParticipants();
-            dataGridView3.DataSource = lesparticipants;*/
-
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[2].Visible = false;
             dataGridView2.Columns[0].Visible = false;
             dataGridView2.Columns[3].Visible = false;
-           /* dataGridView3.Columns[0].Visible = false;
-            dataGridView3.Columns[3].Visible = false;*/
+
+
+        }
+        
+        private void RefreshSouhait()
+        {
+            lesouhaits = database.MesSouhaits();
+            dataGridView4.DataSource = null;
+            dataGridView4.DataSource = database.MesSouhaits();
 
         }
 
@@ -143,9 +147,21 @@ namespace Ppe_VALLADE
         {
             var souhaitsupp = (Souhait)dataGridView4.CurrentRow.DataBoundItem;
 
-            //requete pour supp souhait
+            database.SuppSouhait(souhaitsupp.Id);
+
+            RefreshSouhait();
 
             MessageBox.Show("Souhait refusé");
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            var souhaitsupp = (Souhait)dataGridView4.CurrentRow.DataBoundItem;
+
+            database.UpdateSouhait(souhaitsupp.Id);
+            database.RenseignerIdSession(souhaitsupp.Id_participant, souhaitsupp.Id_session);
+
+            RefreshSouhait();
         }
     }
 }

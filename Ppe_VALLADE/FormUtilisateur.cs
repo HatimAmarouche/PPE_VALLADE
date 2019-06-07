@@ -11,13 +11,13 @@ using System.Windows.Forms;
 namespace Ppe_VALLADE
 {
    
-    public partial class FormUtilisateur2 : Form
+    public partial class FormUtilisateur : Form
     {
         private DatabaseFormation database = new DatabaseFormation();
         List<Session> messessions = new List<Session>();
 
 
-        public FormUtilisateur2()
+        public FormUtilisateur()
         {
             InitializeComponent();
             database.ConnectDB();
@@ -28,6 +28,8 @@ namespace Ppe_VALLADE
             comboBox1.DataSource = database.MesFormations();
             comboBox1.DisplayMember = "nom";
             comboBox1.ValueMember = "id";
+
+
             
             //Charger toutes les formations
 

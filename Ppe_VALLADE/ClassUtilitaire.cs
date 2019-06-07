@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 using Dapper;
+using System.Data;
+using System.Configuration;
 using MySql.Data.MySqlClient;
 
 namespace Ppe_VALLADE
@@ -119,7 +122,7 @@ namespace Ppe_VALLADE
             //PARTICIPANTS
             public List<Participant> MesParticipants()
         {
-            String strQuery = "SELECT * FROM PARTICIPANT WHERE idsession = 0";
+            String strQuery = "SELECT * FROM PARTICIPANT WHERE idsession IS NULL";
             connexion.Open();
             var participants = connexion.Query<Participant>(strQuery).ToList();
             connexion.Close();
@@ -153,7 +156,17 @@ namespace Ppe_VALLADE
            connexion.Open();
            connexion.Query<Participant>(strQuery, parameters).ToList();
            connexion.Close();
-       } 
+       }
+
+        public void UpdateIdSessionParticipant(int id)
+        {
+            String strQuery = "UPDATE participant SET idsession = NULL WHERE id = @_id";
+            var parameters = new DynamicParameters();
+            parameters.Add("_id", id);
+            connexion.Open();
+            connexion.Query(strQuery, parameters);
+            connexion.Close();
+        }
 
         //UTILISATEUR
         public List<Utilisateur> MesUtilisateurs()
@@ -292,22 +305,66 @@ namespace Ppe_VALLADE
         public List<Souhait> MesSouhaits()
         {
 
-            String strQuery = "SELECT * FROM souhait";
+            String strQuery = "SELECT * FROM souhait WHERE accepter = 0";
             connexion.Open();
             var souhaits = connexion.Query<Souhait>(strQuery).ToList();
             connexion.Close();
             return souhaits;
 
         }
-        public void InsertSouhait(int id_participant, int id_session)
+       public void InsertSouhait(int id_participant, int id_session)
         {
-            String strQuery = "INSERT INTO souhait(id, id_participant, id_session, accepter) VALUES (NULL, @_id_participant, @_id_session, NULL)";
+            String strQuery = "INSERT INTO souhait(id, id_participant, id_session, accepter) VALUES (NULL, @_id_participant, @_id_session, 0)";
             var parameters = new DynamicParameters();
             parameters.Add("_id_participant", id_participant);
             parameters.Add("_id_session", id_session);
             connexion.Open();
             connexion.Query<Utilisateur>(strQuery, parameters).ToList();
             connexion.Close();
+        }
+
+        public void SuppSouhait(int id_participant)
+        {
+            String strQuery = "DELETE FROM souhait WHERE id_participant = @_id_participant";
+            var dynamicParameters = new DynamicParameters();
+            dynamicParameters.Add("_id_participant", id_participant);
+            connexion.Open();
+            connexion.Query(strQuery, dynamicParameters);
+            connexion.Close();
+        }
+
+        public void UpdateSouhait(int id)
+        {
+            String strQuery = "UPDATE souhait SET accepter = 1 WHERE id = @_id";
+            var parameters = new DynamicParameters();
+            parameters.Add("_id", id);
+            connexion.Open();
+            connexion.Query(strQuery, parameters);
+            connexion.Close();
+        }
+
+       
+
+
+
+        //PROCEDURES STOCKEES
+
+        public void RenseignerIdSession(int idparticipant, int idsession)
+        {
+            using(MySqlCommand cmd = new MySqlCommand("RenseignerIdSession", connexion))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("?id_participant", idparticipant);
+                cmd.Parameters["?id_participant"].Direction = ParameterDirection.Input;
+
+                cmd.Parameters.AddWithValue("?id_session", idsession);
+                cmd.Parameters["?id_session"].Direction = ParameterDirection.Input;
+
+                connexion.Open();
+                int rowAffected = cmd.ExecuteNonQuery();
+                connexion.Close();
+            }
         }
 
 

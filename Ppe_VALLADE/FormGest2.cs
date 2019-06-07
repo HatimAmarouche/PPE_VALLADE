@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dapper;
+using MySql.Data.MySqlClient;
 
 namespace Ppe_VALLADE
 {
@@ -16,29 +18,29 @@ namespace Ppe_VALLADE
         List<Participant> lesparticipants = new List<Participant>();
         List<Participant> lesinscrits = new List<Participant>();
        // List<Incident> lesincidents = new List<Incident>();
-        private Formation _formation;
-        private Session _session;
+        private Formation formation;
+        private Session session;
 
-        public Formation formation
+        public Formation Formation
         {
             get
             {
-                return _formation;
+                return formation;
             }
             set
             {
-                _formation = value;
+                formation = value;
             }
         }
-        public Session session
+        public Session Session
         {
             get
             {
-                return _session;
+                return session;
             }
             set
             {
-                _session = value;
+                session = value;
             }
         }
         public FormGest2(Formation maformation, Session masession)
@@ -101,6 +103,7 @@ namespace Ppe_VALLADE
                 dataGridView2.DataSource = lesparticipants;
 
                 database.InsertSouhait(monparticipant.Id, session.Id);
+                
                 //requete pour inserer un souhait avec id_participant, id_session, accepter à 0
                 }
             }
@@ -126,6 +129,9 @@ namespace Ppe_VALLADE
 
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = lesinscrits;
+
+                database.UpdateIdSessionParticipant(moninscrit.Id);
+                database.SuppSouhait(moninscrit.Id);
             }
 
 
@@ -153,6 +159,13 @@ namespace Ppe_VALLADE
         {
             FormGestAjoutParticipant formGestAjoutParticipant = new FormGestAjoutParticipant();
             formGestAjoutParticipant.ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+       
+            FormConvocation formConvocation = new FormConvocation();
+            formConvocation.Show();
         }
     }
 

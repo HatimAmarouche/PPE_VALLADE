@@ -22,7 +22,7 @@ namespace Ppe_VALLADE
         private void button2_Click(object sender, EventArgs e)
         {
             database.CreateParticipant(textBox1.Text, textBox2.Text, textBox3.Text);
-         
+            this.DialogResult = DialogResult.OK;
           
         }
 

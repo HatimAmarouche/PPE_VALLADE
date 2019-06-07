@@ -38,7 +38,7 @@ namespace Ppe_VALLADE
             Session masession = (Session)dataGridView1.CurrentRow.DataBoundItem;
             try { 
             FormGest2 form2 = new FormGest2(maformation, masession);
-            form2.ShowDialog();
+            form2.Show();
             }
             catch(Exception )
             { }
