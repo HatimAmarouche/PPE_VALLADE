@@ -74,6 +74,9 @@ namespace Ppe_VALLADE
                 dataGridView1.Visible = false;
                 label4.Visible = true;
             }
+
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView2.Columns[0].Visible = false; 
           
         }
 
