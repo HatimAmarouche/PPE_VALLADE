@@ -8,10 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Metro;
 
 namespace Ppe_VALLADE
 {
-    public partial class FormulaireConnexion : Form
+    public partial class FormulaireConnexion : MetroForm
     {
         public Utilisateur laconnexion = new Utilisateur();
         DateTime datetoday = DateTime.Now;

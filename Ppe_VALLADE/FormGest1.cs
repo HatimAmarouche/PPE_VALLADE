@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dapper;
+using DevComponents.DotNetBar.Metro;
 
 namespace Ppe_VALLADE
 {
-    public partial class FormGest1 : Form
+    public partial class FormGest1 : MetroForm
     {
         private DatabaseFormation database = new DatabaseFormation();
 

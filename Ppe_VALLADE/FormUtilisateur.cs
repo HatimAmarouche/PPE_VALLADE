@@ -7,11 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Metro;
 
 namespace Ppe_VALLADE
 {
    
-    public partial class FormUtilisateur : Form
+    public partial class FormUtilisateur : MetroForm
     {
         private DatabaseFormation database = new DatabaseFormation();
         List<Session> messessions = new List<Session>();

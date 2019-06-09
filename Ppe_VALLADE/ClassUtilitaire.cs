@@ -180,18 +180,6 @@ namespace Ppe_VALLADE
 
         }
 
-
-        /*     public List<Incident> MesIncidents()
-             {
-                 String strQuery = "SELECT id, resolu, date_incident, description FROM incident";
-                 connexion.Open();
-                 var incidents = connexion.Query<Incident>(strQuery).ToList();
-                 connexion.Close();
-                 return incidents;
-             } */
-
-      
-
         public List<Utilisateur> Connexion(String ndc, String mdp)
         {
 

@@ -10,10 +10,11 @@ using System.Windows.Forms;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
+using DevComponents.DotNetBar.Metro;
 
 namespace Ppe_VALLADE
 {
-    public partial class FormConvocation : Form
+    public partial class FormConvocation : MetroForm
     {
         public FormConvocation()
         {

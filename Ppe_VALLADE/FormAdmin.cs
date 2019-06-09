@@ -7,11 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Metro;
 
 namespace Ppe_VALLADE
 {
 
-    public partial class FormAdmin : Form
+    public partial class FormAdmin : MetroForm
     {
         private DatabaseFormation database = new DatabaseFormation();
         List<Formation> lesformations = new List<Formation>();
@@ -66,6 +67,9 @@ namespace Ppe_VALLADE
             dataGridView1.Columns[2].Visible = false;
             dataGridView2.Columns[0].Visible = false;
             dataGridView2.Columns[3].Visible = false;
+            dataGridView4.Columns[0].Visible = false;
+            dataGridView4.Columns[1].Visible = false;
+            dataGridView4.Columns[2].Visible = false;
 
 
         }
@@ -97,11 +101,16 @@ namespace Ppe_VALLADE
 
         private void button5_Click(object sender, EventArgs e)
         {
-            var maformation = (Formation)dataGridView2.CurrentRow.DataBoundItem;
+            
 
-            FormAdminModifFormation formAdminModifFormation = new FormAdminModifFormation(maformation);
+                var maformation = (Formation)dataGridView2.CurrentRow.DataBoundItem;
 
-            formAdminModifFormation.ShowDialog();
+         
+                FormAdminModifFormation formAdminModifFormation = new FormAdminModifFormation(maformation);
+
+                formAdminModifFormation.ShowDialog();
+         
+
         }
 
         private void button6_Click(object sender, EventArgs e)

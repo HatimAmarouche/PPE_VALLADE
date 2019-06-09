@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dapper;
 using MySql.Data.MySqlClient;
+using DevComponents.DotNetBar.Metro;
 
 namespace Ppe_VALLADE
 {
-    public partial class FormGest2 : Form
+    public partial class FormGest2 : MetroForm
     {
         private DatabaseFormation database = new DatabaseFormation();
         List<Participant> lesparticipants = new List<Participant>();
@@ -136,13 +137,6 @@ namespace Ppe_VALLADE
 
 
 
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            FormIncidentUser formincident = new FormIncidentUser();
-            formincident.ShowDialog();
 
         }
 

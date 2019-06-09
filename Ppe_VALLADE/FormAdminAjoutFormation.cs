@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Metro;
 
 namespace Ppe_VALLADE
 {
-    public partial class FormAdminAjoutFormation : Form
+    public partial class FormAdminAjoutFormation : MetroForm
     {
         private DatabaseFormation database = new DatabaseFormation();
         public FormAdminAjoutFormation()
@@ -28,6 +29,11 @@ namespace Ppe_VALLADE
             database.CreateFormation(niveau, nom);
             this.DialogResult = DialogResult.OK;
             
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }

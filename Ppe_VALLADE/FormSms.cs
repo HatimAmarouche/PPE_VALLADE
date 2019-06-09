@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Metro;
 
 namespace Ppe_VALLADE
 {
-    public partial class FormSms : Form
+    public partial class FormSms : MetroForm
     {
         private DatabaseFormation database = new DatabaseFormation();
         private Participant _inscrit;

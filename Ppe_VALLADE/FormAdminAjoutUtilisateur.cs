@@ -11,11 +11,12 @@ using System.Windows.Forms;
 using Dapper;
 using HashageStandard;
 using MySql.Data.MySqlClient;
+using DevComponents.DotNetBar.Metro;
 
 
 namespace Ppe_VALLADE
 {
-    public partial class FormAdminAjoutUtilisateur : Form
+    public partial class FormAdminAjoutUtilisateur : MetroForm
     {
         private DatabaseFormation database = new DatabaseFormation();
         List<Utilisateur> monuser = new List<Utilisateur>();
@@ -46,6 +47,11 @@ namespace Ppe_VALLADE
 
                 this.DialogResult = DialogResult.OK;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }

@@ -11,10 +11,11 @@ using System.Windows.Forms;
 using Dapper;
 using HashageStandard;
 using MySql.Data.MySqlClient;
+using DevComponents.DotNetBar.Metro;
 
 namespace Ppe_VALLADE
 {
-    public partial class FormMotDePassePerdu : Form
+    public partial class FormMotDePassePerdu : MetroForm
     {
 
         private DatabaseFormation database = new DatabaseFormation();

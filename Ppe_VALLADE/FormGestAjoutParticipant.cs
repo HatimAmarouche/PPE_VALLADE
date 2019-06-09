@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Metro;
 
 namespace Ppe_VALLADE
 {
-    public partial class FormGestAjoutParticipant : Form
+    public partial class FormGestAjoutParticipant : MetroForm
     {
         private DatabaseFormation database = new DatabaseFormation();
         public FormGestAjoutParticipant()

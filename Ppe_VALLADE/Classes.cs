@@ -362,32 +362,6 @@ namespace Ppe_VALLADE
 
     }
 
-  /* public class Incident
-    {
-        private int _id;
-        private DateTime _date_incident;
-        private string _resolu;
-        private string _description;
-
-        
-        public int Id { get; set; }
-        public DateTime Date_incident { get; set; }
-        private string Resolu { get; set; }
-        private string Description { get; set; }
-
-    }*/
-
- /*   public class Tentative
-    {
-        private int _id;
-        private int _id_user;
-        private DateTime _date_tentative;
-
-        public int Id { get; set; }
-        public int Id_user { get; set; }
-        public int Date_tentative { get; set; }
-    }*/
-
     public static class Sms
     {
           public static void Send(String msg, String numero)

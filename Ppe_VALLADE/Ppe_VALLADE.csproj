@@ -35,6 +35,15 @@
     <Reference Include="Dapper, Version=1.50.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.1.50.7\lib\net451\Dapper.dll</HintPath>
     </Reference>
+    <Reference Include="DevComponents.DotNetBar2">
+      <HintPath>..\..\..\..\Documents\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.Instrumentation">
+      <HintPath>..\..\..\..\Documents\DevComponents.Instrumentation.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.TreeGX">
+      <HintPath>..\..\..\..\Documents\DevComponents.TreeGX.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
       <Private>True</Private>
@@ -65,7 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Classes.cs" />
     <Compile Include="ClassUtilitaire.cs" />
     <Compile Include="FormConvocation.cs">
       <SubType>Form</SubType>
@@ -126,12 +135,6 @@
     </Compile>
     <Compile Include="FormAdminModifUser.Designer.cs">
       <DependentUpon>FormAdminModifUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormIncidentUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormIncidentUser.Designer.cs">
-      <DependentUpon>FormIncidentUser.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMotDePassePerdu.cs">
       <SubType>Form</SubType>
@@ -199,9 +202,6 @@
     <EmbeddedResource Include="FormGestAjoutParticipant.resx">
       <DependentUpon>FormGestAjoutParticipant.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormIncidentUser.resx">
-      <DependentUpon>FormIncidentUser.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormMotDePassePerdu.resx">
       <DependentUpon>FormMotDePassePerdu.cs</DependentUpon>
     </EmbeddedResource>
@@ -223,7 +223,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
